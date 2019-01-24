@@ -1,0 +1,57 @@
+{% extends 'common/base.html' %}
+{% block main_body %}
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <h4 class="box-title">添加Backend</h4>
+        </div>
+        <form class="form-horizontal" role="form" action="" method="post">
+            <div class="box-body with-border">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="backend">Backend</label>
+                    <div class="col-sm-8">
+                        {{ use_backend_add_form.backend }}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="frontend">Frontend</label>
+                    <div class="col-sm-8">
+                        {{ use_backend_add_form.frontend }}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="relationship">逻辑</label>
+                    <div class="col-sm-8">
+                        {{ use_backend_add_form.relationship }}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group" id="acl_form">
+                    <label class="col-sm-2 control-label" for="acl">Acl</label>
+                    <div class="col-sm-8">
+                        {{ use_backend_add_form.acl }}
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-2">
+                        <a type="button" class="btn btn-default" href="{% url 'use_backend_list' frontend %}">取消</a>
+                        <button type="submit" class="btn btn-success">提交</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            var label = '<div class="hr-line-dashed">' +
+                '</div><div class="form-group">' +
+                '<label class="col-sm-2 control-labek"' +
+                '</div>';
+            $('#acl_form').after(label);
+        });
+    </script>
+{% endblock %}

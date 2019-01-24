@@ -1,0 +1,62 @@
+{% extends 'common/base.html' %}
+{% block main_body %}
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <h4 class="box-title">添加ACL</h4>
+        </div>
+        <form class="form-horizontal" action="" method="post" role="form">
+            {% csrf_token %}
+            <div class="box-body with-border">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="name">Acl名称</label>
+                    <div class="col-sm-8">
+                        {{ acl_add_form.name }}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="criterion">Acl规则</label>
+                    <div class="col-sm-8">
+                        {{ acl_add_form.criterion }}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="criterion_args">Acl规则参数</label>
+                    <div class="col-sm-8">
+                        {{ acl_add_form.criterion_args }}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="flags">flags</label>
+                    <div class="col-sm-8">
+                        {{ acl_add_form.flags }}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="value">value</label>
+                    <div class="col-sm-8">
+                        {{ acl_add_form.value }}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="frontend">frontend</label>
+                    <div class="col-sm-8">
+                        {{ acl_add_form.frontend }}
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-2" style="margin-top: 0px;">
+                        <a type="button" class="btn btn-default" href="{% url 'frontend_list' %}">取消</a>
+                        <button type="submit" class="btn btn-success">提交</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

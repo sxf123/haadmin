@@ -1,0 +1,11 @@
+{%- for backend in backends -%}
+backend {{ backend.name }}
+{%- if backend.options|length > 0 %}
+{%- for option in backend.options %}
+    option {{ option.item }}{% if option.param %}{{ option.param }}{% endif %}
+{%- endfor %}
+{%- endif %}
+{%- for server in backend.servers %}
+    server {{ server.name }} {{ server.ip }}:{{ server.port }} check inter {{ server.check_interval }} {% if server.cookie %}cookie {{ server.cookie }} {% endif %}rise {{ server.rise }} fall {{ server.fall }} weight {{ server.weight }}
+{%- endfor %}
+{%- endfor %}

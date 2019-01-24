@@ -1,0 +1,41 @@
+global
+        log localhost   local3 err
+        log localhost len 5800 local0
+        maxconn 500000
+        #chroot /usr/share/haproxy
+        uid 99
+        gid 99
+        daemon
+        nbproc 1
+        pidfile /var/run/haproxy.pid
+        stats socket /var/run/haproxy.sock mode 600 level user
+
+defaults
+        log    global
+        mode    http
+        retries    3
+        maxconn    500000s
+        option forwardfor except 10.0.0.0/8 header X-Real-IP
+        option http-server-close
+        option dontlognull
+        option accept-invalid-http-request
+        option httplog
+        option abortonclose
+        option http-buffer-request
+
+        #log-format %{+Q}o\ %{-Q}ci\ -\ -\ [%T]\ %r\ %ST\ %B\ \"\"\ \"\"\ %cp\ %ms\ %ft\ %b\ %s\ %Tq\ %Tw\ %Tc\ %Tr\ %Tt\ %tsc\ %ac\ %fc\ %bc\ %sc\ %rc\ %sq\ %bq\ %CC\ %CS\ %hrl\ %hsl
+        log-format %{+Q}o\ %{-Q}ci\ -\ -\ [%T]\ %r\ %ST\ %B\ \"\"\ \"\"\ %cp\ %ms\ %ft\ %b\ %s\ %Tq\ %Tw\ %Tc\ %Tr\ %Tt\ %tsc\ %ac\ %fc\ %bc\ %sc\ %rc\ %sq\ %bq\ %CC\ %CS
+        timeout connect   3s
+        timeout client    120s
+        timeout server    120s
+
+
+listen status
+        bind *:1081
+        mode http
+        maxconn 2
+        stats uri /xstats
+        stats hide-version
+        stats auth hxadmin:___hxadmin0829___
+        stats admin if TRUE
+

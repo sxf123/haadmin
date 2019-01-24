@@ -1,0 +1,90 @@
+{% extends 'common/base.html' %}
+{% load pagination_tags %}
+{% block main_body %}
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <div class="col-sm-1" style="padding-left: 0px">
+                <a type="button" class="btn btn-primary btn-sm" href="{% url 'backend_add' %}">添加Backend</a>
+            </div>
+            <div class="col-sm-8">
+            </div>
+            <div class="col-sm-3" style="padding-right: 0px;">
+                <div class="input-group inline-group">
+                    <input type="text" class="form-control input-sm" name="search"/>
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-sm btn-primary"> -搜索- </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-body with-border">
+            <table class="table table-striped table-bordered text-center table-hover">
+                <thead>
+                    <th>#</th>
+                    <th>Backend名称</th>
+                    <th>
+                        <div>操作</div>
+                    </th>
+                </thead>
+                <tbody>
+                    {% autopaginate backend_list 10 %}
+                    {% for backend in backend_list %}
+                        <tr>
+                            <td>{{ backend.id }}</td>
+                            <td>{{ backend.name }}</td>
+                            <td>
+                                <a href="{% url 'server_list' backend.name %}">
+                                    <button type="butotn" class="btn btn-success btn-sm">server</button>
+                                </a>
+                                <a href="">
+                                    <button type="button" class="btn btn-primary btn-sm">编辑</button>
+                                </a>
+                                <a href="{% url 'backend_option_add' backend.id %}" type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#addOption" onclick="modify_form({{ backend.id }})">添加option</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="box-footer">
+            <div class="row">
+                <div class="col-sm-6 pull-right">
+                    {% paginate %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" id="addOption" aria-labelledby="addOptionModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="nodeModalLabel">
+                        添加option
+                    </h4>
+                </div>
+                <form class="form-horizontal" method="post" action="" role="form" id="addOptionForm">
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="submit" class="btn btn-primary">提交</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+           $('#addOption').on('hidden',function () {
+              $(this).removeData('modal');
+           });
+        });
+        function modify_form(id) {
+            $('#addOptionForm').attr('action','/haproxy/backend/option/add/' + id + '/');
+        }
+    </script>
+{% endblock %}

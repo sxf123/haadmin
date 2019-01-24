@@ -1,0 +1,25 @@
+{% csrf_token %}
+<div class="form-group">
+    <label class="col-sm-3 control-label" for="item">option规则</label>
+    <div class="col-sm-9">
+        {{ option_add_form.item }}
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-3 control-label" for="param">option参数</label>
+    <div class="col-sm-9">
+        {{ option_add_form.param }}
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-3 control-label" for="frontend">Frontend</label>
+    <div class="col-sm-9">
+        {{ option_add_form.frontend }}
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-3 control-label" for="backend">backend</label>
+    <div class="col-sm-9">
+        {{ option_add_form.backend }}
+    </div>
+</div>

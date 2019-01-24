@@ -1,0 +1,59 @@
+{% extends 'common/base.html' %}
+{% load pagination_tags %}
+{% block main_body %}
+    <div class="box box-default">
+        <div class="box-header">
+            <div class="col-sm-1" style="padding-left: 0px;">
+                <a type="button" class="btn btn-primary btn-sm" href="{% url 'server_add' backend %}">添加Server</a>
+            </div>
+            <div class="col-sm-8">
+            </div>
+            <div class="col-sm-3" style="padding-right: 0px;">
+                <div class="input-group inline-group">
+                    <input type="text" class="form-control input-sm" name="search"/>
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-primary btn-sm"> - 搜索 -</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-body with-border">
+            <table class="table table-striped table-bordered text-center table-hover">
+                <thead>
+                    <th>#</th>
+                    <th>Server名称</th>
+                    <th>Server IP</th>
+                    <th>Server端口</th>
+                    <th>所属Backend</th>
+                    <th>
+                        <div>操作</div>
+                    </th>
+                </thead>
+                <tbody>
+                    {% autopaginate server_list 10 %}
+                    {% for server in server_list %}
+                        <tr>
+                            <td>{{ server.id }}</td>
+                            <td>{{ server.name }}</td>
+                            <td>{{ server.ip }}</td>
+                            <td>{{ server.port }}</td>
+                            <td>{{ server.backend.name }}</td>
+                            <td>
+                                <a href="">
+                                    <button type="button" class="btn btn-primary btn-sm">编辑</button>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="box-footer">
+            <div class="row">
+                <div class="col-sm-6 pull-right">
+                    {% paginate %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

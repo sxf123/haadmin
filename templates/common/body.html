@@ -1,0 +1,24 @@
+{% load static %}
+<script src="{% static 'plugin/js/jquery.min.js' %}"></script>
+<script src="{% static 'plugin/js/jquery-ui.js' %}"></script>
+<script src="{% static 'plugin/js/jsrender.min.js' %}"></script>
+<script src="{% static 'plugin/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'plugin/js/bootstrap-button.js' %}"></script>
+<script src="{% static 'plugin/js/moment-with-locales.js' %}"></script>
+<script src="{% static 'plugin/js/adminlte.min.js' %}"></script>
+<script src="{% static 'plugin/js/moment-2.21.0.min.js' %}"></script>
+<script src="{% static 'plugin/js/bootstrap-datetimepicker.min.js' %}"></script>
+<script src="{% static 'plugin/js/select2.js' %}"></script>
+<script src="{% static 'plugin/js/fileinput.js' %}"></script>
+<script src="{% static 'plugin/js/fileinput.min.js' %}"></script>
+<script src="{% static 'plugin/js/date.js' %}"></script>
+<script src="{% static 'plugin/js/bootstrap-treeview.min.js' %}"></script>
+<script src="{% static 'plugin/js/jstree.min.js' %}"></script>
+<script>
+    $(function () {
+       $(".select2").select2({
+           'placeholder': '请选择',
+           'allowClear': true
+       });
+    });
+</script>

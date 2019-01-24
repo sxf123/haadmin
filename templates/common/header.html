@@ -1,0 +1,33 @@
+<a href="#" class="logo">
+    <span class="logo-mini"><b>P</b>ro</span>
+    <span class="logo-lg"><b>HAadmin</b></span>
+</a>
+<nav class="navbar navbar-static-top">
+    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </a>
+    <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+            <li class="dropdown user user-menu">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="hidden-xs">注销</span>
+                </a>
+                <ul class="dropdown-menu" style="width: auto;">
+                    <li class="user-header">
+                        <p>
+                            <small>Member since Nov. 2012</small>
+                        </p>
+                    </li>
+                    <li class="user-footer">
+                        <div class="text-center">
+                            <a href="{% url 'logout' %}" class="btn btn-default btn-flat">退出</a>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>

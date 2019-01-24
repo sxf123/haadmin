@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    {% include 'common/head.html' %}
+    {% include 'common/body.html' %}
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+    <header class="main-header">
+        {% include 'common/header.html' %}
+    </header>
+    <aside class="main-sidebar">
+        {% include 'common/side.html' %}
+    </aside>
+    <div class="content-wrapper">
+        <section class="content">
+            {% block main_body %}
+            {% endblock %}
+        </section>
+    </div>
+    <div class="main-footer">
+        {% include 'common/footer.html' %}
+    </div>
+</div>
+</body>
+</html>

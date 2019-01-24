@@ -1,0 +1,33 @@
+{% load split_res %}
+<section class="sidebar">
+    <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">MAIN NAVIGATION</li>
+        {% with request.path|split_path as path %}
+        <li class="treeview {% ifequal path.1 'haproxy' %}menu-open{% endifequal %}">
+            <a href="">
+                <i class="fa fa-amazon"></i> <span>Haproxy</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu" {% ifequal path.1 'haproxy' %}style="display: block;"{% endifequal %}>
+                <li class="active">
+                    <a href="{% url 'instance_list' %}">
+                        <i class="fa fa-dashboard"></i> <span>实例管理</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="{% url 'frontend_list' %}">
+                        <i class="fa fa-navicon"></i> <span>Frontend</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="{% url 'backend_list' %}">
+                        <i class="fa fa-server"></i> <span>Backend</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        {% endwith %}
+    </ul>
+</section>

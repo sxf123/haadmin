@@ -1,0 +1,59 @@
+{% extends 'common/base.html' %}
+{% load pagination_tags %}
+{% block main_body %}
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <div class="col-sm-1" style="padding-left: 0px;">
+                <a type="button" class="btn btn-primary btn-sm" href="{% url 'acl_add' frontend %}">添加ACL</a>
+            </div>
+            <div class="col-sm-8">
+            </div>
+            <div class="col-sm-3" style="padding-right: 0px;">
+                <div class="input-group inline-group">
+                    <input type="text" class="form-control input-sm" name="search"/>
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-sm btn-primary"> - 搜索 - </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-body with-border">
+            <table class="table table-bordered table-striped text-center table-hover">
+                <thead>
+                    <th>#</th>
+                    <th>Acl名称</th>
+                    <th>Acl规则</th>
+                    <th>acl value</th>
+                    <th>frontend</th>
+                    <th>
+                        <div>操作</div>
+                    </th>
+                </thead>
+                <tbody>
+                    {% autopaginate acl_list 10 %}
+                    {% for acl in acl_list %}
+                        <tr>
+                            <td>{{ acl.id }}</td>
+                            <td>{{ acl.name }}</td>
+                            <td>{{ acl.criterion }}</td>
+                            <td>{{ acl.value }}</td>
+                            <td>{{ acl.frontend.name }}</td>
+                            <td>
+                                <a href="">
+                                    <button type="button" class="btn btn-primary btn-sm">编辑</button>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="box-footer">
+            <div class="row">
+                <div class="col-xs-6 pull-right">
+                    {% paginate %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

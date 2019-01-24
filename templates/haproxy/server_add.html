@@ -1,0 +1,83 @@
+{% extends 'common/base.html' %}
+{% block main_body %}
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <h4 class="box-title">添加Server</h4>
+        </div>
+        <form class="form-horizontal" method="post" action="" role="form">
+            <div class="box-body with-border">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="name">Server名称</label>
+                    <div class="col-sm-8">
+                        {{ server_add_form.name }}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="ip">Server IP</label>
+                    <div class="col-sm-8">
+                        {{ server_add_form.ip }}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="port">Server端口</label>
+                    <div class="col-sm-8">
+                        {{ server_add_form.port }}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="check_interval">Check Interval</label>
+                    <div class="col-sm-8">
+                        {{ server_add_form.check_interval }}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="rise">Rise</label>
+                    <div class="col-sm-8">
+                        {{ server_add_form.rise }}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="fall">Fall</label>
+                    <div class="col-sm-8">
+                        {{ server_add_form.fall }}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="cookie">Cookie</label>
+                    <div class="col-sm-8">
+                        {{ server_add_form.cookie }}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="weight">Weight</label>
+                    <div class="col-sm-8">
+                        {{ server_add_form.weight }}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <labek class="col-sm-2 control-label" for="backend">Backend</labek>
+                    <div class="col-sm-8">
+                        {{ server_add_form.backend }}
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-2" style="margin-top: 0px;">
+                        <a type="button" class="btn btn-default" href="{% url 'server_list' backend %}">取消</a>
+                        <button type="submit" class="btn btn-success">提交</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

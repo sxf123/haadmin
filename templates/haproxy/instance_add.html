@@ -1,0 +1,48 @@
+{% extends 'common/base.html' %}
+{% block main_body %}
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <h4 class="box-title">添加实例</h4>
+        </div>
+        <form class="form-horizontal" action="" method="post" role="form">
+            <div class="box-body with-border">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="name">实例名称</label>
+                    <div class="col-sm-8">
+                        {{ instance_add_form.name }}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="ip">实例IP</label>
+                    <div class="col-sm-8">
+                        {{ instance_add_form.ip }}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="ha_version">Haproxy版本</label>
+                    <div class="col-sm-8">
+                        {{ instance_add_form.ha_version }}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="cluster">业务集群</label>
+                    <div class="col-sm-8">
+                        {{ instance_add_form.cluster }}
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-2" style="margin-top: 0px;">
+                        <a type="button" class="btn btn-default" href="{% url 'instance_list' %}">取消</a>
+                        <button type="submit" class="btn btn-success">提交</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

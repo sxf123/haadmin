@@ -1,0 +1,33 @@
+{% extends 'common/base.html' %}
+{% block main_body %}
+    <div class="box box-default">
+        <div class="box-header">
+            <h4 class="box-title">添加Backend</h4>
+        </div>
+        <form class="form-horizontal" method="post" action="" role="form">
+            <div class="box-body with-border">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="name">Backend名称</label>
+                    <div class="col-sm-8">
+                        {{ backend_add_form.name }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="instance">所属实例</label>
+                    <div class="col-sm-8">
+                        {{ backend_add_form.instance }}
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                <div class="row">
+                    <div class="col-sm-4 col-sm-offset-2">
+                        <a href="{% url 'backend_list' %}" type="button" class="btn btn-default">取消</a>
+                        <button type="submit" class="btn btn-success">提交</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

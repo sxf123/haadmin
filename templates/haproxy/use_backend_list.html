@@ -1,0 +1,48 @@
+{% extends 'common/base.html' %}
+{% load pagination_tags %}
+{% block main_body %}
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <div class="col-sm-1" style="padding-left: 0px;">
+                <a type="button" class="btn btn-primary btn-sm" href="{% url 'use_backend_add' frontend %}">添加UseBackend</a>
+            </div>
+            <div class="col-sm-8"></div>
+            <div class="col-sm-3">
+                <div class="input-group inline-group">
+                    <input type="text" class="form-control input-sm" name="search"/>
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-sm btn-primary"> -搜索- </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-body with-border">
+            <table class="table table-bordered table-striped table-hover text-center">
+                <thead>
+                    <th>#</th>
+                    <th>backend</th>
+                    <th>frontend</th>
+                    <th>acl规则</th>
+                </thead>
+                <tbody>
+                    {% autopaginate use_backend_list 10 %}
+                    {% for use_backend in use_backend_list %}
+                        <tr>
+                            <td>{{ use_backend.id }}</td>
+                            <td>{{ use_backend.backend.name }}</td>
+                            <td>{{ use_backend.frontend.name }}</td>
+                            <td>{{ use_backend.acl }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="box-footer">
+            <div class="row">
+                <div class="col-sm-6 pull-right">
+                    {% paginate %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

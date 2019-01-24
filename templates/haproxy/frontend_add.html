@@ -1,0 +1,62 @@
+{% extends 'common/base.html' %}
+{% block main_body %}
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <h4 class="box-title">添加frontend</h4>
+        </div>
+        <form class="form-horizontal" action="" method="post" role="form">
+            {% csrf_token %}
+            <div class="box-body with-border">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="name">frontend名称</label>
+                    <div class="col-sm-8">
+                        {{ frontend_add_form.name }}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="ip">frontend监听IP</label>
+                    <div class="col-sm-8">
+                        {{ frontend_add_form.ip }}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="port">frontend监听端口</label>
+                    <div class="col-sm-8">
+                        {{ frontend_add_form.port }}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="mode">模式</label>
+                    <div class="col-sm-8">
+                        {{ frontend_add_form.mode }}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="monitor_uri">健康检测地址</label>
+                    <div class="col-sm-8">
+                        {{ frontend_add_form.monitor_uri }}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="instance">实例</label>
+                    <div class="col-sm-8">
+                        {{ frontend_add_form.instance }}
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-2" style="margin-top: 0px">
+                        <a type="button" class="btn btn-default" href="{% url 'frontend_list' %}">取消</a>
+                        <button type="submit" class="btn btn-success">提交</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{%- for frontend in frontends -%}
+frontend {{ frontend.name }}
+    bind {{ frontend.ip }}:{{ frontend.port }}
+    mode {{ frontend.mode }}
+    monitor-uri {{ frontend.monitor_uri }}
+{%- for option in frontend.options %}
+    option {{ option.item }}{% if option.param %}{{ option.param }}{% endif %}
+{%- endfor %}
+    declare capture request len 4800
+    http-request capture req.body id 0
+{%- for acl in frontend.acls %}
+    acl {{ acl.name }} {{ acl.criterion }}{% if acl.criterion_args %}({{ acl.criterion_args }}){% endif %} {% if acl.flags %}{{ acl.flags }}{% endif %} {{ acl.value }}
+{%- endfor %}
+{% endfor %}
